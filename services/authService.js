@@ -112,9 +112,8 @@ exports.login = asyncHandler(async (req, res, next) => {
 
   ///////////////////////////////////////////////////////////////////////
 
-  // @desc   make sure the user is logged in
+// @desc   make sure the user is logged in
 exports.protect = asyncHandler(async (req, res, next) => {
-  
     // 1) Check if token exist, if exist get
     let token;
     if (
@@ -133,7 +132,8 @@ exports.protect = asyncHandler(async (req, res, next) => {
     }
   
     // 2) Verify token (no change happens, expired token)
-     const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
+    const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
+    //console.log("decoded" , decoded);
   
     // 3) Check if user exists
     const currentUser = await User.findById(decoded.userId);
@@ -164,8 +164,10 @@ exports.protect = asyncHandler(async (req, res, next) => {
     }
   
     req.user = currentUser;
+    //console.log(currentUser);
     next();
   });
+  
   //////////////////////////////////////////////////////////////////////////////
   
   // @desc    Authorization (User Permissions)

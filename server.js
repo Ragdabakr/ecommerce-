@@ -29,7 +29,7 @@ app.options('*', cors());
 // compress all responses
 app.use(compression());
 
-// Checkout webhook
+//Checkout webhook
 // app.post(
 //   '/webhook-checkout',
 //   express.raw({ type: 'application/json' }),

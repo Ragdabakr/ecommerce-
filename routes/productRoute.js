@@ -33,8 +33,8 @@ router
     authService.protect,
     authService.allowedTo('admin', 'manager'),
     uploadProductImages,
-    resizeProductCoverImage,
     resizeProductImages,
+    resizeProductCoverImage,
     createProductValidator,
     createProduct
   );

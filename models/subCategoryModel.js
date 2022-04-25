@@ -13,6 +13,7 @@ const subCategorySchema = new mongoose.Schema(
       type: String,
       lowercase: true,
     },
+     // parent reference (one to many)
     category: {
       type: mongoose.Schema.ObjectId,
       ref: 'Category',
